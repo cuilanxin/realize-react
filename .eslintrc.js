@@ -5,7 +5,7 @@ module.exports = {
     'prettier/prettier': 'warn',
     'react/no-unstable-nested-components': 'off',
     'no-invalid-this': 'off',
-    'no-unused-vars': 'error',
+    'no-unused-vars': 'warn',
     'no-console': 'warn',
   },
 };
