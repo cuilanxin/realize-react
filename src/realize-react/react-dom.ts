@@ -6,11 +6,8 @@ import { TEXT_TYPE } from './utils';
  * @param {*} dom 挂载的 真实dom
  */
 function render(reactElement: ReactElement, dom: HTMLElement | null) {
-  if (reactElement) {
-    // 有可能是 null undefined boolean; 0和空字符串 wrapToVom处理过了
-    const vDom = createDom(reactElement);
-    dom!.appendChild(vDom);
-  }
+  const vDom = createDom(reactElement);
+  dom!.appendChild(vDom);
 }
 
 function createDom(vDom: ReactElement): HTMLElement {

@@ -7,23 +7,13 @@ import { wrapToVom } from './utils';
  * @returns {type, key, props:{ children, ...props}} React 对象
  */
 function createElement(type: string, props: Record<string, any>, ...children: Array<ReactNode>): ReactElement {
-  if (children.length > 1) {
-    return {
-      type,
-      props: {
-        ...props,
-        children: children.map(wrapToVom),
-      },
-    };
-  } else {
-    return {
-      type,
-      props: {
-        ...props,
-        children: wrapToVom(children[0]),
-      },
-    };
-  }
+  return {
+    type,
+    props: {
+      ...props,
+      children: wrapToVom(children),
+    },
+  };
 }
 
 export default {

@@ -9,11 +9,13 @@ import ReactDOM from './realize-react/react-dom';
 //     return <div>ClassComponent</div>;
 //   }
 // }
-// const element2 = React.createElement('div', {}, 0);
-const element2 = (
-  <div>
-    hello <span>word</span>
-  </div>
-);
+const element2 = React.createElement('div', {}, null);
+console.log('element2: ', element2);
+// const element2 = (
+//   <div>
+//     hello <span>word</span>
+//     {null}
+//   </div>
+// );
 
 ReactDOM.render(element2, document.getElementById('root'));
