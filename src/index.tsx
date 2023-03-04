@@ -4,18 +4,29 @@ import ReactDOM from './realize-react/react-dom';
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 
-// class ClassComponent extends React.Component {
-//   render() {
-//     return <div>ClassComponent</div>;
-//   }
-// }
-const element2 = React.createElement('div', {}, null);
-console.log('element2: ', element2);
+class ClassComponent extends React.Component {
+  render() {
+    return 23;
+  }
+}
+
+function FunctionComponent() {
+  return (
+    <div>
+      函数组件
+      <ClassComponent />
+    </div>
+  );
+}
+// const element2 = <ClassComponent />;
+// const element2 = React.createElement('div', {}, 2);
+// console.log('element2: ', element2);
 // const element2 = (
 //   <div>
 //     hello <span>word</span>
 //     {null}
+//     <FunctionComponent />
 //   </div>
 // );
 
-ReactDOM.render(element2, document.getElementById('root'));
+ReactDOM.render(<FunctionComponent />, document.getElementById('root'));

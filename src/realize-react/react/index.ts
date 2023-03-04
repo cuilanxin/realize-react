@@ -1,4 +1,6 @@
-import { wrapToVom } from './utils';
+import { wrapToVom } from '../utils';
+import Component from './ClassComponent';
+
 /**
  *
  * @param {*} type HTML 元素 函数组件 类组件
@@ -18,4 +20,5 @@ function createElement(type: string, props: Record<string, any>, ...children: Ar
 
 export default {
   createElement,
+  Component,
 };

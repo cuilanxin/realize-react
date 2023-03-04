@@ -9,10 +9,8 @@ export function wrapToVom(children: ReactNode[]): ReactNode | ReactNode[] {
       newChildren.push({ type: TEXT_TYPE, props: { children: element } });
       continue;
     }
-    if (typeof element !== 'boolean' && element) {
-      newChildren.push(element);
-    }
+    newChildren.push(element);
   }
   if (newChildren.length > 1) return newChildren;
-  return newChildren;
+  return newChildren[0];
 }

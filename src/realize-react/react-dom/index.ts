@@ -1,5 +1,6 @@
-import { TEXT_TYPE } from './utils';
-
+import { TEXT_TYPE } from '../utils';
+import functionComponent from './functionComponent';
+import classComponents from './classComponents';
 /**
  *
  * @param {*} reactElement react 对象
@@ -7,14 +8,25 @@ import { TEXT_TYPE } from './utils';
  */
 function render(reactElement: ReactElement, dom: HTMLElement | null) {
   const vDom = createDom(reactElement);
-  dom!.appendChild(vDom);
+  if (vDom) {
+    dom!.appendChild(vDom);
+  }
 }
 
-function createDom(vDom: ReactElement): HTMLElement {
+function createDom(vDom: ReactElement): HTMLElement | Text | null {
+  if (!(vDom instanceof Object)) {
+    if (typeof vDom === 'boolean' || vDom === null) return null;
+    return document.createTextNode(vDom);
+  }
   const { type, props } = vDom;
-  let dom: HTMLElement | Node;
+  let dom: HTMLElement | Text;
   if (type === TEXT_TYPE) {
     dom = document.createTextNode(props.children as string);
+  } else if (typeof type === 'function') {
+    if ('isReactComponent' in type) {
+      return classComponents(vDom);
+    }
+    return functionComponent(vDom);
   } else {
     dom = document.createElement(type as string);
   }
@@ -25,12 +37,11 @@ function createDom(vDom: ReactElement): HTMLElement {
         const element = props.children[index];
         render(element as ReactElement, dom as HTMLElement);
       }
-    } else if ((props.children as ReactElement)?.type) {
+    } else if ((props.children as ReactElement).type) {
       // 只有一个儿子
       render(props.children as ReactElement, dom as HTMLElement);
     }
   }
-  // @ts-ignore
   return dom;
 }
-export default { render };
+export default { render, createDom };
