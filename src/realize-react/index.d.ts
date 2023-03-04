@@ -15,5 +15,6 @@ declare type ReactElement = {
   type: string | number | Symbol | FunctionComponent | Component;
   props: Readonly<{}> & {
     children?: ReactNode | ReactNode[];
+    style?: CSSStyleDeclaration;
   };
 };

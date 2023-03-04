@@ -12,7 +12,7 @@ class ClassComponent extends React.Component {
 
 function FunctionComponent() {
   return (
-    <div>
+    <div style={{ color: 'red', width: 200, fontSize: 20 }} className="class-name">
       函数组件
       <ClassComponent />
     </div>

@@ -1,6 +1,7 @@
 import { TEXT_TYPE } from '../utils';
 import functionComponent from './functionComponent';
 import classComponents from './classComponents';
+import updateProps from './updateProps';
 /**
  *
  * @param {*} reactElement react 对象
@@ -31,6 +32,7 @@ function createDom(vDom: ReactElement): HTMLElement | Text | null {
     dom = document.createElement(type as string);
   }
   if (props) {
+    dom = updateProps(dom as HTMLElement, props);
     if (Array.isArray(props.children)) {
       // 多个儿子
       for (let index = 0; index < props.children.length; index++) {
