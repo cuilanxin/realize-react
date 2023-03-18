@@ -1,23 +1,19 @@
 export default function updateProps(dom: HTMLElement, props: ReactElement['props']) {
-  for (const key in props) {
-    if (key === 'children') continue;
-    if (key === 'style') {
-      for (const attr in props.style) {
-        if ('width' === attr && typeof props.style[attr] === 'number') {
-          props.style.width = props.style.width + 'px';
-        }
-        if ('height' === attr && typeof props.style[attr] === 'number') {
-          props.style.height = props.style.height + 'px';
-        }
-        if ('fontSize' === attr && typeof props.style[attr] === 'number') {
-          props.style.fontSize = props.style.fontSize + 'px';
-        }
+  const { children, style, ...other } = props;
+  if (style) {
+    for (const attr in style) {
+      if ('width' === attr && typeof style[attr] === 'number') {
+        style.width = style.width + 'px';
       }
-      Object.assign(dom.style, props.style);
-      continue;
+      if ('height' === attr && typeof style[attr] === 'number') {
+        style.height = style.height + 'px';
+      }
+      if ('fontSize' === attr && typeof style[attr] === 'number') {
+        style.fontSize = style.fontSize + 'px';
+      }
     }
-    // @ts-ignore
-    dom[key] = props[key];
+    Object.assign(dom.style, style);
   }
+  Object.assign(dom, other);
   return dom;
 }

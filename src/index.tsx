@@ -12,20 +12,19 @@ class ClassComponent extends React.Component {
 
 function FunctionComponent() {
   return (
-    <div style={{ color: 'red', width: 200, fontSize: 20 }} className="class-name">
+    <div className="ssss" style={{ color: 'red' }}>
       函数组件
-      <ClassComponent />
     </div>
   );
 }
 // const element2 = <ClassComponent />;
-// const element2 = React.createElement('div', {}, 2);
-// console.log('element2: ', element2);
+const element2 = React.createElement('div', {}, 2);
+console.log('element2: ', element2);
+console.log('element2: ', <FunctionComponent />);
 // const element2 = (
 //   <div>
 //     hello <span>word</span>
 //     {null}
-//     <FunctionComponent />
 //   </div>
 // );
 
